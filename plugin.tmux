@@ -12,7 +12,6 @@ source "./scripts/utils.sh"
 declare -r CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 declare -a REQUIRED_COMMANDS=(
-  'jq'
   'fzf'
 )
 
@@ -26,7 +25,7 @@ main() {
     fi
   done
 
-  local -r opt_key="$(get_tmux_option "@1password-key" "u")"
+  local -r opt_key="$(get_tmux_option "@passwords-key" "u")"
 
   tmux bind-key "$opt_key" \
     run "tmux split-window -l 10 \"$CURRENT_DIR/scripts/main.sh '#{pane_id}'\""
