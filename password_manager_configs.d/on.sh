@@ -80,7 +80,7 @@ get_item_password() {
 #       }
 JQ_FILTER_GET="
 .details
-| if .password then
+| if .password and .password != \"\" then
 .password
   else
     .fields[]
